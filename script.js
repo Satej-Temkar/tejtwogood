@@ -3,6 +3,13 @@ const scroll = new LocomotiveScroll({
     smooth: true
 });
 
+document.addEventListener('mousemove', function(dets){
+    gsap.to("#curser",{
+        left:dets.x,
+        top:dets.y,
+    })
+})
+
 function videoconanim(){
 let videocon =  document.querySelector('#video-container');
 let playbtn = document.querySelector('#play');
@@ -11,6 +18,10 @@ videocon.addEventListener('mouseenter', function(){
         opacity:1,
         scale:1,
     })
+    gsap.to("#curser",{
+        opacity:0,
+        scale:0,
+    })
 })
 
 videocon.addEventListener('mouseleave', function(){
@@ -18,12 +29,20 @@ videocon.addEventListener('mouseleave', function(){
         opacity:0,
         scale:0,
     })
+    gsap.to("#curser",{
+        opacity:1,
+        scale:1,
+    })
 })
 
 videocon.addEventListener('mousemove', function(dets){
     gsap.to(playbtn, {
         left:dets.x-50,
         top:dets.y-60,
+    })
+    gsap.to("#curser",{
+        opacity:0,
+        scale:0,
     })
 })
 }
